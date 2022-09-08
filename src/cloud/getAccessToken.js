@@ -14,7 +14,6 @@ const url = tokenUrl + params;
 const getAccessToken = async () => {
     try {
         const res = await axios.get(url);
-        console.log(res)
         if (res.status === 200 && !res.data.errcode) {
             return res.data.access_token
         } else {
