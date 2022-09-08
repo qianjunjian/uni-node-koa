@@ -24,7 +24,7 @@ class Check {
     }
 
     password(num) {
-        let passwordReg = /^[a-zA-Z0-9_-]{4,16}$/;
+        let passwordReg = /^[a-zA-Z0-9]{4,16}$/;
         if (!passwordReg.test(this.obj[num])) {
             throw new SystemError("密码格式错误！", 400);
         }

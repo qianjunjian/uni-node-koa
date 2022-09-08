@@ -1,7 +1,7 @@
 const router = require("koa-router")();
 const Result = require("../../modal/Result");
 
-router.get("/register", async (ctx) => {
+router.get("/login", async (ctx) => {
    const { account, password } = ctx.request.body;
    
 });

@@ -3,8 +3,8 @@ const Check = require("./check");
 class UserCheck extends Check {
     check() {
         super.empty();
-        super.phone();
-        super.password();
+        super.phone(0);
+        super.password(1);
     }
 }
 
