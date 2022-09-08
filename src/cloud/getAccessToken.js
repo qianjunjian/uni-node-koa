@@ -11,7 +11,7 @@ const params = qs.stringify({
 
 const url = tokenUrl + params;
 
-const getToken = async () => {
+const getAccessToken = async () => {
     try {
         const res = await axios.get(url);
         console.log(res)
@@ -25,4 +25,4 @@ const getToken = async () => {
     }
 }
 
-module.exports = getToken;
+module.exports = getAccessToken;
