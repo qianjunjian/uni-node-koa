@@ -6,6 +6,7 @@ const parser = require("koa-bodyparser");
 const router = require("koa-router")();
 const cors = require("koa2-cors");
 const errMid = require("./src/middleware/errorMiddleware");
+const auth = require("./src/middleware/auth");
 
 const _api = "/api";
 
@@ -18,6 +19,8 @@ app.use(parser());
 app.use(json());
 
 app.use(errMid);
+
+router.use(auth);
 
 files.keys().forEach(key => {
     let value = files(key).default || files(key);

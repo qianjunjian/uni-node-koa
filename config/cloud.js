@@ -6,5 +6,9 @@ module.exports = {
     database_record_delete: "https://api.weixin.qq.com/tcb/databasedelete?access_token=",
     database_record_query: "https://api.weixin.qq.com/tcb/databasequery?access_token=",
     database_record_update: "https://api.weixin.qq.com/tcb/databaseupdate?access_token=",
-    env: "cloud1-6gy847ci9c21f5dc"
+    env: "cloud1-6gy847ci9c21f5dc",
+    apiWhiteList: [
+        "/api/login",
+        "/api/register"
+    ]
 }

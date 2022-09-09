@@ -11,7 +11,7 @@ router.post("/register", async (ctx) => {
         const res = await $post("query", `db.collection(\"business_diancan_acc\").where({account:"${account}"}).get()`)
         console.log(res)
         if (res.data.length > 0) {
-            new Result(ctx, "已经注册过！", 202).answer();
+            new Result(ctx, "此账号已经注册过！", 400).answer();
         } else {
             // 插入数据
             const uid = new Date().getTime();
