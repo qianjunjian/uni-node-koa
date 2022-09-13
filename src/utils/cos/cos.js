@@ -19,8 +19,12 @@ const uploadFile = (fileName, filePath) => {
             SliceSize: 1024 * 1024 * 5 /* 触发分块上传的阈值，超过5MB使用分块上传，非必须 */
         }).then(res => {
             resolve(res.Location);
+            // 删除临时文件
+            fs.removeSync(filePath)
         }).catch(err => {
             reject(err)
+            // 删除临时文件
+            fs.removeSync(filePath)
         })
     })
 }
@@ -33,7 +37,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         const fileNameList = file.originalname.split(".")
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix + "." + fileNameList[fileNameList.length - 1])
+        cb(null, fileNameList[0] + "-" + uniqueSuffix + "." + fileNameList[fileNameList.length - 1])
     }
 })
 
