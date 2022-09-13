@@ -10,6 +10,7 @@ module.exports = async (ctx, next) => {
                 errcode: e.errcode
             }
         } else {
+            console.log(e)
             ctx.body = {
                 errmsg: "系统异常"
             }
