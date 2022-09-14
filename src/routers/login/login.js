@@ -12,7 +12,9 @@ router.post("/login", async (ctx) => {
             new Result(ctx, "账号或者密码错误！", 400).answer();
         } else {
             const obj = JSON.parse(res.data[0]);
-            const token = getToken(obj.uid);
+            const token = getToken({
+                uid: obj.uid
+            });
             new Result(ctx, "登录成功！", 200, {
                 token
             }).answer();

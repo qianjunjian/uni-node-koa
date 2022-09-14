@@ -9,7 +9,6 @@ router.post("/register", async (ctx) => {
     new UserCheck(ctx, account, password).check();
     try {
         const res = await $post("query", `db.collection(\"business_diancan_acc\").where({account:"${account}"}).get()`)
-        console.log(res)
         if (res.data.length > 0) {
             new Result(ctx, "此账号已经注册过！", 400).answer();
         } else {

@@ -4,6 +4,7 @@ module.exports = async (ctx, next) => {
     try {
         await next();
     } catch (e) {
+        console.log(e)
         if (e instanceof SystemError) {
             ctx.body = {
                 errmsg: e.errmsg,
@@ -12,6 +13,7 @@ module.exports = async (ctx, next) => {
         } else {
             console.log(e)
             ctx.body = {
+                errcode: 500,
                 errmsg: "系统异常"
             }
             ctx.status = 500;
