@@ -9,7 +9,6 @@ router.get("/shopInfo", async (ctx) => {
         const uid = ctx.auth.uid;
         const res = await $post("query", `db.collection(\"business_diancan_shop\").field({name: true, logo: true, address: true, _id: true}).where({uid:"${uid}"}).get()`)
         if (res.data.length > 0) {
-            console.log(res)
             new Result(ctx, "SUCCESS", 200, JSON.parse(res.data[0] || {})).answer();
         } else {
             new Result(ctx, "SUCCESS", 200).answer();
