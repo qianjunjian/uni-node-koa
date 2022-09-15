@@ -7,9 +7,8 @@ const CategoryCheck = require("../../utils/check/CategoryCheck");
 router.get("/dishCategoryQuery", async (ctx) => {
     const { page = 0 } = ctx.query;
     try {
-        const uid = ctx.auth.uid;
         const sk = page * 10;
-        const res = await $post("query", `db.collection(\"business_diancan_dishes_category\").field({label: true, value: true, count: true, _id: true, cid: true}).orderBy("cid", "desc").where({uid:"${uid}"}).limit(10).skip(${sk}).get()`);
+        const res = await $post("query", `db.collection(\"business_diancan_dishes_category\").orderBy("cid", "desc").limit(10).skip(${sk}).get()`);
         const data = res.data.map(item => JSON.parse(item))
         new Result(ctx, "SUCCESS", 200, {
             total: res.pager.Total || 0,
