@@ -2,7 +2,6 @@ const router = require("koa-router")();
 const Result = require("../../modal/Result");
 const SystemError = require("../../modal/SystemError");
 const $post = require("../../cloud/database");
-const CategoryCheck = require("../../utils/check/CategoryCheck");
 
 router.get("/dishCategoryQuery", async (ctx) => {
     const { page = 0 } = ctx.query;
